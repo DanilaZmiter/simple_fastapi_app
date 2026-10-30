@@ -4,6 +4,7 @@ from src.models.base import BaseORM
 
 
 class UserORM(BaseORM):
+    __tablename__ = "user_table"
     __table_args__ = (
         CheckConstraint(
             "length(full_name) > 3", name="check_of_name_lenght"
