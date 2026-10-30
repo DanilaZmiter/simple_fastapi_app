@@ -1,7 +1,20 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 import uvicorn
+from src.models.base import BaseORM
+from src.core.database import database
 
-app = FastAPI()  # initialize fastapi object
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with database.engine.begin() as connection:
+        await connection.run_sync(BaseORM.metadata.create_all)
+        yield
+        await connection.close()
+
+
+app = FastAPI(lifespan=lifespan)  # initialize fastapi object
 
 
 @app.get("/root/")  # make view for /root/ endpoint
