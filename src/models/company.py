@@ -1,0 +1,12 @@
+from sqlalchemy import Enum, String
+from sqlalchemy.orm import Mapped, mapped_column
+
+from enums.company_types import CompanyTypes
+from models.base import BaseORM
+
+
+class CompanyORM(BaseORM):
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    name: Mapped[str] = mapped_column(String(120))
+    description: Mapped[str] = mapped_column(String(1000))
+    type: Mapped[CompanyTypes] = mapped_column(Enum(CompanyTypes))
