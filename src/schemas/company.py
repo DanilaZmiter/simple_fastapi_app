@@ -3,7 +3,7 @@ from typing import Annotated, Optional
 from annotated_types import Ge, MaxLen
 from pydantic import ConfigDict
 
-from enums.company_types import CompanyTypes
+from src.enums.company_types import CompanyTypes
 from src.schemas.base import BaseSchema
 
 
