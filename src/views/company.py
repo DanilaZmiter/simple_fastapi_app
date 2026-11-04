@@ -38,4 +38,6 @@ async def create_company(
     company_schema: CompanyIn,
     session: AsyncSession = Depends(database.get_scope_session),
 ):
-    return company_repo.create_company(company_schema=company_schema, session=session)
+    return await company_repo.create_company(
+        company_schema=company_schema, session=session
+    )
