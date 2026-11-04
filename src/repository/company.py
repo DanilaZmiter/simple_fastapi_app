@@ -2,8 +2,8 @@ from typing import Any, List, Optional
 
 from sqlalchemy import Result, select
 from sqlalchemy.ext.asyncio import AsyncSession
-from models.company import CompanyORM
-from schemas.user import UserIn, UserResponse
+from src.models.company import CompanyORM
+from src.schemas.user import UserIn, UserResponse
 from src.schemas.company import CompanyResponse
 
 
