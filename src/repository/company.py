@@ -11,7 +11,9 @@ class CompanyRepository:  # by class for future upgrades
     """Read methods for repository"""
 
     @classmethod
-    async def get_company(cls, session: AsyncSession, id: int) -> CompanyResponse:
+    async def get_company(
+        cls, session: AsyncSession, id: int
+    ) -> Optional[CompanyResponse]:
         result: Optional[CompanyORM] = await session.get(
             CompanyORM, id
         )  # get company model object
