@@ -17,9 +17,11 @@ class CompanyRepository:  # by class for future upgrades
         result: Optional[CompanyORM] = await session.get(
             CompanyORM, id
         )  # get company model object
-        return CompanyResponse.model_validate(
-            result
-        )  # return pydantic schema for json response from view methods
+        if result != None:
+            return CompanyResponse.model_validate(
+                result
+            )  # return pydantic schema for json response from view methods
+        return None
 
     @classmethod
     async def get_list_company(
