@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from schemas.company import CompanyResponse
+from src.schemas.company import CompanyResponse
 from src.core.database import database
 from src.repository.company import company_repo
 
