@@ -1,8 +1,8 @@
 from sqlalchemy import Enum, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from enums.company_types import CompanyTypes
-from models.base import BaseORM
+from src.enums.company_types import CompanyTypes
+from src.models.base import BaseORM
 
 
 class CompanyORM(BaseORM):
