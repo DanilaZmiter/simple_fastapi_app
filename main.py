@@ -4,6 +4,7 @@ from fastapi import FastAPI
 import uvicorn
 from src.models.base import BaseORM
 from src.core.database import database
+from src.views.company import router as company_router
 
 
 @asynccontextmanager
@@ -15,6 +16,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)  # initialize fastapi object
+app.include_router(company_router)
 
 
 @app.get("/root/")  # make view for /root/ endpoint
