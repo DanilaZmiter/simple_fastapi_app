@@ -53,10 +53,18 @@ class CompanyRepository:  # by class for future upgrades
         company_update: CompanyUpdate,
         session: AsyncSession,
     ) -> CompanyResponse:
-        for name, value in company_update.model_dump(exclude_none=True).items():
+        for name, value in company_update.model_dump(
+            exclude_none=True
+        ).items():  # add only not None elements
             setattr(company_model, name, value)
         await session.commit()
         return CompanyResponse.model_validate(company_model)
+
+    @classmethod
+    async def delete_company(
+        cls, company_model: CompanyORM, session: AsyncSession
+    ) -> None:
+        await session.delete(company_model)
 
 
 company_repo = CompanyRepository()
