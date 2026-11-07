@@ -3,7 +3,7 @@ from typing import Any, List, Optional
 from sqlalchemy import Result, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.models.company import CompanyORM
-from src.schemas.company import CompanyIn, CompanyResponse
+from src.schemas.company import CompanyIn, CompanyResponse, CompanyUpdate
 
 
 class CompanyRepository:  # by class for future upgrades
@@ -45,6 +45,18 @@ class CompanyRepository:  # by class for future upgrades
         return CompanyResponse.model_validate(
             orm_model
         )  # take new model with id to server response
+
+    @classmethod
+    async def update_company(
+        cls,
+        company_model: CompanyORM,
+        company_update: CompanyUpdate,
+        session: AsyncSession,
+    ) -> CompanyResponse:
+        for name, value in company_update.model_dump(exclude_none=True).items():
+            setattr(company_model, name, value)
+        await session.commit()
+        return CompanyResponse.model_validate(company_model)
 
 
 company_repo = CompanyRepository()
