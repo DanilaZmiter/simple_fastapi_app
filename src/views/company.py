@@ -48,6 +48,11 @@ async def update_company(
     return await company_repo.update_company(
         session=session, company_model=company, company_update=company_update
     )
-    
+
+
 @router.delete("/delete")
-async def 
+async def delete_company(
+    company: CompanyORM = Depends(cm_dependencies.dget_company_by_id),
+    session: AsyncSession = Depends(database.get_scope_session),
+) -> None:
+    await company_repo.delete_company(company_model=company, session=session)
