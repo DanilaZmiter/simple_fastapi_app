@@ -10,16 +10,12 @@ class CompanyRepository:  # by class for future upgrades
     """Read methods for repository"""
 
     @classmethod
-    async def get_company(
-        cls, session: AsyncSession, id: int
-    ) -> Optional[CompanyResponse]:
+    async def get_company(cls, session: AsyncSession, id: int) -> Optional[CompanyORM]:
         result: Optional[CompanyORM] = await session.get(
             CompanyORM, id
         )  # get company model object
         if result != None:
-            return CompanyResponse.model_validate(
-                result
-            )  # return pydantic schema for json response from view methods
+            return result  # return model for dependency layer
         return None
 
     @classmethod
