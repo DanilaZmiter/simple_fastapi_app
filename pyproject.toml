@@ -24,6 +24,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "alembic>=1.20.1",
     "black>=26.10.1",
 ]
 [tool.uv]
