@@ -37,3 +37,14 @@ async def create_company(
     return await company_repo.create_company(
         company_schema=company_schema, session=session
     )
+
+
+@router.patch("/update")
+async def update_item(
+    company_update: CompanyUpdate,
+    company: CompanyORM = Depends(cm_dependencies.dget_company_by_id),
+    session: AsyncSession = Depends(database.get_scope_session),
+):
+    return await company_repo.update_company(
+        session=session, company_model=company, company_update=company_update
+    )
