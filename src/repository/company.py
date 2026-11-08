@@ -61,6 +61,7 @@ class CompanyRepository:  # by class for future upgrades
         cls, company_model: CompanyORM, session: AsyncSession
     ) -> None:
         await session.delete(company_model)
+        await session.commit()
 
 
 company_repo = CompanyRepository()
