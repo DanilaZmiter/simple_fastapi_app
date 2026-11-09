@@ -17,11 +17,11 @@ class UserResponse(BaseSchema):
     full_name: Annotated[str, MinLen(4), MaxLen(100)]
     email: Annotated[str, MinLen(10), MaxLen(255)]
     is_active: bool
+    created_at: datetime
+    updated_at: datetime
 
 
 class UserUpdate(BaseSchema):
     full_name: Optional[Annotated[str, MinLen(4), MaxLen(100)]]
     email: Optional[Annotated[str, MinLen(10), MaxLen(255)]]
     is_active: Optional[bool]
-    created_at: datetime
-    updated_at: datetime
