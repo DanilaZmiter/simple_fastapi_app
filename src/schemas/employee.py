@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Annotated, Optional
 
 from annotated_types import Ge, MaxLen
@@ -15,6 +16,8 @@ class EmployeeResponse(EmployeeIn):
     id: Annotated[int, Ge(1)]
     user_id: Annotated[int, Ge(1)]
     company_id: Annotated[int, Ge(1)]
+    created_at: datetime
+    updated_at: datetime
 
 
 class EmployeeUpdate(BaseSchema):
