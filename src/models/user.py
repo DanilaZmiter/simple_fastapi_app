@@ -1,9 +1,6 @@
-import datetime
-
-from sqlalchemy import CheckConstraint, String, func
+from sqlalchemy import CheckConstraint, String
 from sqlalchemy.orm import Mapped, mapped_column
 from src.models.base import BaseORM
-from datetime import datetime
 
 
 class UserORM(BaseORM):
@@ -20,7 +17,3 @@ class UserORM(BaseORM):
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     hashed_password: Mapped[str]
     is_active: Mapped[bool]
-    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
-    updated_at: Mapped[datetime] = mapped_column(
-        server_default=func.now(), onupdate=func.now()
-    )
