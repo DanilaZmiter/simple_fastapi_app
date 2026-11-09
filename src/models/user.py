@@ -21,6 +21,6 @@ class UserORM(BaseORM):
     full_name: Mapped[str] = mapped_column(String(100))
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     hashed_password: Mapped[str]
-    is_active: Mapped[bool]
+    is_active: Mapped[bool] = mapped_column(default=True)
 
     employee: Mapped["EmployeeORM"] = relationship(back_populates="user")
