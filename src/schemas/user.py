@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src.schemas.base import BaseSchema
 from annotated_types import Ge, MinLen, MaxLen
 from typing import Annotated, Optional
@@ -21,3 +23,5 @@ class UserUpdate(BaseSchema):
     full_name: Optional[Annotated[str, MinLen(4), MaxLen(100)]]
     email: Optional[Annotated[str, MinLen(10), MaxLen(255)]]
     is_active: Optional[bool]
+    created_at: datetime
+    updated_at: datetime
