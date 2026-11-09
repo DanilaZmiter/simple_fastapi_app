@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from typing import Annotated, Optional
 
 from annotated_types import Ge, MaxLen
@@ -16,6 +16,8 @@ class EmployeeResponse(EmployeeIn):
     id: Annotated[int, Ge(1)]
     user_id: Annotated[int, Ge(1)]
     company_id: Annotated[int, Ge(1)]
+    hired_at: date
+    fired_at: date
     created_at: datetime
     updated_at: datetime
 
