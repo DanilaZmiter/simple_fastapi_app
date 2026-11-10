@@ -14,7 +14,7 @@ class EmployeeORM(BaseORM):
     __tablename__ = "employees_table"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(
-        ForeignKey("users_table.id", ondelete="CASCADE")
+        ForeignKey("users_table.id", ondelete="CASCADE"), unique=True
     )
     company_id: Mapped[int] = mapped_column(ForeignKey("companies_table.id"))
     first_name: Mapped[str] = mapped_column(String(40))
