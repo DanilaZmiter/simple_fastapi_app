@@ -6,7 +6,6 @@ from typing import Annotated, Optional
 
 
 class UserIn(BaseSchema):
-    full_name: Annotated[str, MinLen(4), MaxLen(100)]
     email: Annotated[str, MinLen(10), MaxLen(255)]
     raw_password: Annotated[str, MinLen(8), MaxLen(255)]
     is_active: bool = False
@@ -14,7 +13,6 @@ class UserIn(BaseSchema):
 
 class UserResponse(BaseSchema):
     id: Annotated[int, Ge(1)]
-    full_name: Annotated[str, MinLen(4), MaxLen(100)]
     email: Annotated[str, MinLen(10), MaxLen(255)]
     is_active: bool
     created_at: datetime
@@ -22,6 +20,5 @@ class UserResponse(BaseSchema):
 
 
 class UserUpdate(BaseSchema):
-    full_name: Optional[Annotated[str, MinLen(4), MaxLen(100)]]
     email: Optional[Annotated[str, MinLen(10), MaxLen(255)]]
     is_active: Optional[bool]
