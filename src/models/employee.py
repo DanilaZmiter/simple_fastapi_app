@@ -26,7 +26,9 @@ class EmployeeORM(BaseORM):
     first_name: Mapped[str] = mapped_column(String(40))
     last_name: Mapped[str] = mapped_column(String(40))
     bio: Mapped[Optional[str]] = mapped_column(Text)
-    role: Mapped[EmployeeRoles] = mapped_column(Enum(EmployeeRoles))
+    role: Mapped[EmployeeRoles] = mapped_column(
+        Enum(EmployeeRoles), default=EmployeeRoles.Employee
+    )
     hired_at: Mapped[date] = mapped_column(default=date.today)
     fired_at: Mapped[Optional[date]]
 
