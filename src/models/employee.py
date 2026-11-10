@@ -29,8 +29,12 @@ class EmployeeORM(BaseORM):
     hired_at: Mapped[date] = mapped_column(default=date.today)
     fired_at: Mapped[Optional[date]]
 
-    user: Mapped["UserORM"] = relationship(back_populates="employee")
-    company: Mapped["CompanyORM"] = relationship(back_populates="employees")
+    user: Mapped["UserORM"] = relationship(
+        foreign_keys=[user_id], back_populates="employee"
+    )
+    company: Mapped["CompanyORM"] = relationship(
+        foreign_keys=[company_id], back_populates="employees"
+    )
     department: Mapped[Optional["DepartmentORM"]] = relationship(
-        foreign_keys=[department_id]
+        foreign_keys=[department_id], back_populates="employees"
     )
