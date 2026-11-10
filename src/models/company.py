@@ -23,5 +23,5 @@ class CompanyORM(BaseORM):
 
     owner: Mapped["UserORM"] = relationship(foreign_keys=[owner_id])
     employees: Mapped[List["EmployeeORM"]] = relationship(back_populates="company")
-    projects: Mapped[List["ProjectORM"]] = relationship(back_populates="company")  # type: ignore for future
+    # projects: Mapped[List["ProjectORM"]] = relationship(back_populates="company")  # type: ignore for future
     departments: Mapped[List["DepartmentORM"]] = relationship(back_populates="company")
