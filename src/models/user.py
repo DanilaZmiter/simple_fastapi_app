@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import CheckConstraint, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -17,4 +17,4 @@ class UserORM(BaseORM):
     hashed_password: Mapped[str]
     is_active: Mapped[bool] = mapped_column(default=True)
 
-    employee: Mapped["EmployeeORM"] = relationship(back_populates="user")
+    employee: Mapped[Optional["EmployeeORM"]] = relationship(back_populates="user")
