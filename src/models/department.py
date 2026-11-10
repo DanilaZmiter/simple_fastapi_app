@@ -16,7 +16,7 @@ class DepartmentORM(BaseORM):
         ForeignKey("companies_table.id", ondelete="CASCADE"), index=True
     )
     name: Mapped[str] = mapped_column(String(120))
-    parent_id: Optional[Mapped[int]] = mapped_column(
+    parent_id: Mapped[Optional[int]] = mapped_column(
         ForeignKey("departments_table.id", ondelete="SET NULL")
     )
 
