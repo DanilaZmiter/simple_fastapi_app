@@ -1,9 +1,9 @@
 from datetime import date
 from typing import TYPE_CHECKING, Optional
 
-from sqlalchemy import ForeignKey, String, Text
+from sqlalchemy import Enum, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
+from src.enums.employee_roles import EmployeeRoles
 from src.models.base import BaseORM
 
 if TYPE_CHECKING:
@@ -26,6 +26,7 @@ class EmployeeORM(BaseORM):
     first_name: Mapped[str] = mapped_column(String(40))
     last_name: Mapped[str] = mapped_column(String(40))
     bio: Mapped[Optional[str]] = mapped_column(Text)
+    role: Mapped[EmployeeRoles] = mapped_column(Enum(EmployeeRoles))
     hired_at: Mapped[date] = mapped_column(default=date.today)
     fired_at: Mapped[Optional[date]]
 
