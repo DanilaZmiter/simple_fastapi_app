@@ -11,10 +11,8 @@ if TYPE_CHECKING:
 class UserORM(BaseORM):
     __tablename__ = "users_table"
     __table_args__ = (
-        CheckConstraint(
-            "length(email) > 9", name="check_email_lenght"
-        ),  # check of email is grequal that 10
-    )
+        CheckConstraint("length(email) > 9", name="check_email_lenght"),
+    )  # check of email is grequal that 10
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     hashed_password: Mapped[str]
     is_active: Mapped[bool] = mapped_column(default=True)
