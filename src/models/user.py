@@ -5,7 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.models.base import BaseORM
 
 if TYPE_CHECKING:
-    from src.models.empoyee import EmployeeORM
+    from models.employee import EmployeeORM
 
 
 class UserORM(BaseORM):
