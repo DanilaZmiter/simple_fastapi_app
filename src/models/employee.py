@@ -31,4 +31,6 @@ class EmployeeORM(BaseORM):
 
     user: Mapped["UserORM"] = relationship(back_populates="employee")
     company: Mapped["CompanyORM"] = relationship(back_populates="employees")
-    department: Mapped["DepartmentORM"] = relationship(foreign_keys=[department_id])
+    department: Mapped[Optional["DepartmentORM"]] = relationship(
+        foreign_keys=[department_id]
+    )
