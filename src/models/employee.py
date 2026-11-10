@@ -1,5 +1,5 @@
 from datetime import date
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -19,8 +19,8 @@ class EmployeeORM(BaseORM):
     company_id: Mapped[int] = mapped_column(ForeignKey("companies_table.id"))
     first_name: Mapped[str] = mapped_column(String(40))
     last_name: Mapped[str] = mapped_column(String(40))
-    bio: Mapped[str] = mapped_column(Text)
+    bio: Mapped[Optional[str]] = mapped_column(Text)
     hired_at: Mapped[date] = mapped_column(default=date.today)
-    fired_at: Mapped[date]
+    fired_at: Mapped[Optional[date]]
 
     user: Mapped["UserORM"] = relationship(back_populates="employee")
