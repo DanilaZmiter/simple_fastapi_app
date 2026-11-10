@@ -23,8 +23,6 @@ class DepartmentORM(BaseORM):
     parent: Mapped[Optional["DepartmentORM"]] = relationship(
         remote_side="DepartmentORM.id", back_populates="children"
     )
-    children: Mapped[Optional[List["DepartmentORM"]]] = relationship(
-        back_populates="parent"
-    )
+    children: Mapped[List["DepartmentORM"]] = relationship(back_populates="parent")
     company: Mapped["CompanyORM"] = relationship(back_populates="departments")
     employees: Mapped[List["EmployeeORM"]] = relationship(back_populates="department")
