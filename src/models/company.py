@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from sqlalchemy import Enum, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -22,6 +22,6 @@ class CompanyORM(BaseORM):
     )
 
     owner: Mapped["UserORM"] = relationship(foreign_keys=[owner_id])
-    employees: Mapped["EmployeeORM"] = relationship(back_populates="company")
-    projects: Mapped["ProjectORM"] = relationship(back_populates="company")  # type: ignore for future
-    departments: Mapped["DepartmentORM"] = relationship(back_populates="company")
+    employees: Mapped[List["EmployeeORM"]] = relationship(back_populates="company")
+    projects: Mapped[List["ProjectORM"]] = relationship(back_populates="company")  # type: ignore for future
+    departments: Mapped[List["DepartmentORM"]] = relationship(back_populates="company")
