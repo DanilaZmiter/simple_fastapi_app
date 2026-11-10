@@ -1,7 +1,7 @@
 from datetime import date
 from typing import TYPE_CHECKING, Optional
 
-from sqlalchemy import Enum, ForeignKey, String, Text
+from sqlalchemy import Enum, ForeignKey, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.enums.employee_roles import EmployeeRoles
 from src.models.base import BaseORM
@@ -29,7 +29,9 @@ class EmployeeORM(BaseORM):
     role: Mapped[EmployeeRoles] = mapped_column(
         Enum(EmployeeRoles), default=EmployeeRoles.Employee
     )
-    hired_at: Mapped[date] = mapped_column(default=date.today)
+    hired_at: Mapped[date] = mapped_column(
+        default=date.today, server_default=func.current_date()
+    )
     fired_at: Mapped[Optional[date]]
 
     user: Mapped["UserORM"] = relationship(
