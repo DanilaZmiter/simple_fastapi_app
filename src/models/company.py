@@ -8,6 +8,7 @@ from src.models.base import BaseORM
 
 if TYPE_CHECKING:
     from src.models.user import UserORM
+    from src.models.employee import EmployeeORM
 
 
 class CompanyORM(BaseORM):
@@ -20,3 +21,4 @@ class CompanyORM(BaseORM):
     )
 
     owner: Mapped["UserORM"] = relationship(foreign_keys=[owner_id])
+    employees: Mapped["EmployeeORM"] = relationship(back_populates="company")
