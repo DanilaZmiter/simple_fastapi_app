@@ -1,13 +1,13 @@
 from datetime import datetime
 from typing import Annotated, Optional
 
-from annotated_types import Ge, MaxLen
+from annotated_types import Ge, MaxLen, MinLen
 
 from src.schemas.base import BaseSchema
 
 
 class DepartmentIn(BaseSchema):
-    name: Annotated[str, MaxLen(120)]
+    name: Annotated[str, MinLen(5), MaxLen(120)]
     parent_id: Optional[Annotated[int, Ge(1)]] = None
 
 
@@ -19,5 +19,5 @@ class DepartmentResponse(DepartmentIn):
 
 
 class DepartmentUpdate(BaseSchema):
-    name: Optional[Annotated[str, MaxLen(120)]]
+    name: Optional[Annotated[str, MinLen(5), MaxLen(120)]]
     parent_id: Optional[Annotated[int, Ge(1)]] = None
