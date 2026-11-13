@@ -9,7 +9,6 @@ from pydantic import EmailStr
 class UserIn(BaseSchema):
     email: Annotated[EmailStr, MinLen(10), MaxLen(255)]
     raw_password: Annotated[str, MinLen(8), MaxLen(255)]
-    is_active: bool = False
 
 
 class UserResponse(BaseSchema):
@@ -22,4 +21,3 @@ class UserResponse(BaseSchema):
 
 class UserUpdate(BaseSchema):
     email: Optional[Annotated[str, MinLen(10), MaxLen(255)]]
-    is_active: Optional[bool]
