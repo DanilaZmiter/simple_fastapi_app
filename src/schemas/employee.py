@@ -17,7 +17,7 @@ class EmployeeResponse(EmployeeIn):
     company_id: Annotated[int, Ge(1)]
     department_id: Optional[Annotated[int, Ge(1)]]
     hired_at: date
-    fired_at: date
+    fired_at: Optional[date] = None
     created_at: datetime
     updated_at: datetime
 
