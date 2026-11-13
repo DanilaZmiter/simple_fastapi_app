@@ -9,7 +9,7 @@ from src.schemas.base import BaseSchema
 
 class CompanyIn(BaseSchema):
     name: Annotated[str, MinLen(3), MaxLen(120)]
-    description: Optional[Annotated[str, MaxLen(1000)]]
+    description: Optional[Annotated[str, MaxLen(1000)]] = None
     type: CompanyTypes
 
 
@@ -20,6 +20,6 @@ class CompanyResponse(CompanyIn):
 
 
 class CompanyUpdate(BaseSchema):
-    name: Optional[Annotated[str, MinLen(3), MaxLen(120)]]
-    description: Optional[Annotated[str, MaxLen(1000)]]
-    type: Optional[CompanyTypes]
+    name: Optional[Annotated[str, MinLen(3), MaxLen(120)]] = None
+    description: Optional[Annotated[str, MaxLen(1000)]] = None
+    type: Optional[CompanyTypes] = None

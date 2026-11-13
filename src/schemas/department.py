@@ -19,5 +19,5 @@ class DepartmentResponse(DepartmentIn):
 
 
 class DepartmentUpdate(BaseSchema):
-    name: Optional[Annotated[str, MinLen(5), MaxLen(120)]]
+    name: Optional[Annotated[str, MinLen(5), MaxLen(120)]] = None
     parent_id: Optional[Annotated[int, Ge(1)]] = None
