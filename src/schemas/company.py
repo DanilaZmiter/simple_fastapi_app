@@ -15,6 +15,7 @@ class CompanyIn(BaseSchema):
 
 class CompanyResponse(CompanyIn):
     id: Annotated[int, Ge(1)]
+    owner_id: Annotated[int, Ge(1)]
     created_at: datetime
     updated_at: datetime
 
