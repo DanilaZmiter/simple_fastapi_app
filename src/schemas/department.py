@@ -7,7 +7,7 @@ from src.schemas.base import BaseSchema
 
 
 class DepartmentIn(BaseSchema):
-    name: Annotated[str, MinLen(5), MaxLen(120)]
+    name: Annotated[str, MinLen(1), MaxLen(120)]
     parent_id: Optional[Annotated[int, Ge(1)]] = None
 
 
@@ -19,5 +19,5 @@ class DepartmentResponse(DepartmentIn):
 
 
 class DepartmentUpdate(BaseSchema):
-    name: Optional[Annotated[str, MinLen(5), MaxLen(120)]] = None
+    name: Optional[Annotated[str, MinLen(1), MaxLen(120)]] = None
     parent_id: Optional[Annotated[int, Ge(1)]] = None
