@@ -12,7 +12,6 @@ class CompanyIn(BaseSchema):
     name: Annotated[str, MaxLen(120)]
     description: Annotated[str, MaxLen(1000)]
     type: CompanyTypes
-    owner_id: Annotated[int, Ge(1)]
 
 
 class CompanyResponse(CompanyIn):
@@ -26,4 +25,3 @@ class CompanyUpdate(BaseSchema):
     name: Optional[Annotated[str, MaxLen(120)]]
     description: Optional[Annotated[str, MaxLen(1000)]]
     type: Optional[CompanyTypes]
-    owner_id: Optional[Annotated[int, Ge(1)]]
