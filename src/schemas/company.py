@@ -15,7 +15,6 @@ class CompanyIn(BaseSchema):
 
 
 class CompanyResponse(CompanyIn):
-    model_config = ConfigDict(from_attributes=True)
     id: Annotated[int, Ge(1)]
     created_at: datetime
     updated_at: datetime
