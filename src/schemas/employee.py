@@ -1,13 +1,13 @@
 from datetime import date, datetime
 from typing import Annotated, Optional
-from annotated_types import Ge, MaxLen
+from annotated_types import Ge, MaxLen, MinLen
 
 from src.schemas.base import BaseSchema
 
 
 class EmployeeIn(BaseSchema):
-    first_name: Annotated[str, MaxLen(40)]
-    last_name: Annotated[str, MaxLen(40)]
+    first_name: Annotated[str, MinLen(2), MaxLen(40)]
+    last_name: Annotated[str, MinLen(2), MaxLen(40)]
     bio: Optional[str]
 
 
