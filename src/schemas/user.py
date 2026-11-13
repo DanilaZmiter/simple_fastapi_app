@@ -20,4 +20,4 @@ class UserResponse(BaseSchema):
 
 
 class UserUpdate(BaseSchema):
-    email: Optional[Annotated[str, MinLen(10), MaxLen(255)]]
+    email: Optional[Annotated[str, MinLen(10), MaxLen(255)]] = None
