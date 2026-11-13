@@ -15,6 +15,7 @@ class EmployeeResponse(EmployeeIn):
     id: Annotated[int, Ge(1)]
     user_id: Annotated[int, Ge(1)]
     company_id: Annotated[int, Ge(1)]
+    department_id: Optional[Annotated[int, Ge(1)]]
     hired_at: date
     fired_at: date
     created_at: datetime
