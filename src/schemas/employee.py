@@ -25,6 +25,5 @@ class EmployeeResponse(EmployeeIn):
 class EmployeeUpdate(BaseSchema):
     first_name: Optional[Annotated[str, MaxLen(40)]] = None
     last_name: Optional[Annotated[str, MaxLen(40)]] = None
-    company_id: Optional[Annotated[int, Ge(1)]] = None
     department_id: Optional[Annotated[int, Ge(1)]] = None
     bio: Optional[str] = None
