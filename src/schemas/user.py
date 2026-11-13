@@ -7,7 +7,7 @@ from pydantic import EmailStr
 
 
 class UserIn(BaseSchema):
-    email: Annotated[EmailStr, MinLen(10), MaxLen(255)]
+    email: EmailStr
     raw_password: Annotated[str, MinLen(8), MaxLen(255)]
 
 
@@ -20,4 +20,4 @@ class UserResponse(BaseSchema):
 
 
 class UserUpdate(BaseSchema):
-    email: Optional[Annotated[str, MinLen(10), MaxLen(255)]] = None
+    email: Optional[EmailStr] = None
