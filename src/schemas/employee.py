@@ -8,7 +8,7 @@ from src.schemas.base import BaseSchema
 class EmployeeIn(BaseSchema):
     first_name: Annotated[str, MinLen(2), MaxLen(40)]
     last_name: Annotated[str, MinLen(2), MaxLen(40)]
-    bio: Optional[str] = None
+    bio: Optional[Annotated[str, MaxLen(2000)]] = None
 
 
 class EmployeeResponse(EmployeeIn):
@@ -26,4 +26,4 @@ class EmployeeUpdate(BaseSchema):
     first_name: Optional[Annotated[str, MaxLen(40)]] = None
     last_name: Optional[Annotated[str, MaxLen(40)]] = None
     department_id: Optional[Annotated[int, Ge(1)]] = None
-    bio: Optional[str] = None
+    bio: Optional[Annotated[str, MaxLen(2000)]] = None
