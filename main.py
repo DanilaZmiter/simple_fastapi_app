@@ -1,8 +1,7 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
 import uvicorn
-from src.models.base import BaseORM
+from fastapi import FastAPI
 from src.core.database import database
 from src.views.company import router as company_router
 
@@ -10,7 +9,6 @@ from src.views.company import router as company_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     async with database.engine.begin() as connection:
-        await connection.run_sync(BaseORM.metadata.create_all)
         yield
         await connection.close()
 
