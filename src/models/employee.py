@@ -1,5 +1,5 @@
 from datetime import date
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, List
 
 from sqlalchemy import Enum, ForeignKey, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -10,6 +10,9 @@ if TYPE_CHECKING:
     from src.models.user import UserORM
     from src.models.company import CompanyORM
     from src.models.department import DepartmentORM
+    from src.models.project import ProjectORM
+    from src.models.project_member import ProjectMemberORM
+    from src.models.task import TaskORM
 
 
 class EmployeeORM(BaseORM):
@@ -42,4 +45,16 @@ class EmployeeORM(BaseORM):
     )
     department: Mapped[Optional["DepartmentORM"]] = relationship(
         foreign_keys=[department_id], back_populates="employees"
+    )
+    managed_projects: Mapped[List["ProjectORM"]] = relationship(
+        foreign_keys="ProjectORM.manager_id", back_populates="manager"
+    )
+    project_memberships: Mapped[List["ProjectMemberORM"]] = relationship(
+        back_populates="employee"
+    )
+    assigned_tasks: Mapped[List["TaskORM"]] = relationship(
+        foreign_keys="TaskORM.assignee_id", back_populates="assignee"
+    )
+    authored_tasks: Mapped[List["TaskORM"]] = relationship(
+        foreign_keys="TaskORM.author_id", back_populates="author"
     )
