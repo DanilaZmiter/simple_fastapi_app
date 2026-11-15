@@ -1,0 +1,27 @@
+from sqlalchemy import Enum, ForeignKey
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from src.enums.project_types import (
+    ProjectTypesBusiness,
+    ProjectTypesDifficulty,
+    ProjectTypesDirection,
+    ProjectTypesLifeCycle,
+)
+
+
+class ProjectType(DeclarativeBase):
+    __tablename__ = "project_types_table"
+    project_id: Mapped[int] = mapped_column(
+        ForeignKey("projects_table.id", ondelete="CASCADE"), primary_key=True
+    )
+    business_type: Mapped[ProjectTypesBusiness] = mapped_column(
+        Enum(ProjectTypesBusiness)
+    )
+    direction_type: Mapped[ProjectTypesDirection] = mapped_column(
+        Enum(ProjectTypesDirection)
+    )
+    lifecycle_type: Mapped[ProjectTypesLifeCycle] = mapped_column(
+        Enum(ProjectTypesLifeCycle)
+    )
+    difficulty_type: Mapped[ProjectTypesDifficulty] = mapped_column(
+        Enum(ProjectTypesDifficulty)
+    )
