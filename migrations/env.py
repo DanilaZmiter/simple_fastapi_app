@@ -4,7 +4,7 @@ from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
-from src.models.base import BaseORM
+from src.models.base import Base
 from src.core.settings import settings
 from alembic import context
 
@@ -20,7 +20,7 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
-target_metadata = BaseORM.metadata
+target_metadata = Base.metadata
 config.set_main_option(
     "sqlalchemy.url", settings.db.url
 )  # set engine to alembic migration runner
