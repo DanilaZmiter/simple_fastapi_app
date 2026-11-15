@@ -1,5 +1,5 @@
 from datetime import date
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from sqlalchemy import Enum, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -11,8 +11,8 @@ if TYPE_CHECKING:
     from src.models.company import CompanyORM
     from src.models.employee import EmployeeORM
     from src.models.project_type import ProjectTypeORM
+    from src.models.project_member import ProjectMemberORM
 
-    # from src.models.project_member import ProjectMemberORM
     # from src.models.task import TaskORM
 
 
@@ -40,5 +40,5 @@ class ProjectORM(BaseORM):
     types: Mapped[Optional["ProjectTypeORM"]] = relationship(
         back_populates="project", uselist=False
     )
-    # members: Mapped[List["ProjectMemberORM"]] = relationship(back_populates="project")
+    members: Mapped[List["ProjectMemberORM"]] = relationship(back_populates="project")
     # tasks: Mapped[List["TaskORM"]] = relationship(back_populates="project")
