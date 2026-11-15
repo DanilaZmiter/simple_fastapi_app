@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from src.models.user import UserORM
     from src.models.employee import EmployeeORM
     from src.models.department import DepartmentORM
+    from src.models.project import ProjectORM
 
 
 class CompanyORM(BaseORM):
@@ -23,5 +24,5 @@ class CompanyORM(BaseORM):
 
     owner: Mapped["UserORM"] = relationship(foreign_keys=[owner_id])
     employees: Mapped[List["EmployeeORM"]] = relationship(back_populates="company")
-    # projects: Mapped[List["ProjectORM"]] = relationship(back_populates="company")  # type: ignore for future
+    projects: Mapped[List["ProjectORM"]] = relationship(back_populates="company")  # type: ignore for future
     departments: Mapped[List["DepartmentORM"]] = relationship(back_populates="company")
