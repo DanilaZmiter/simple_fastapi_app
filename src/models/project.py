@@ -12,8 +12,7 @@ if TYPE_CHECKING:
     from src.models.employee import EmployeeORM
     from src.models.project_type import ProjectTypeORM
     from src.models.project_member import ProjectMemberORM
-
-    # from src.models.task import TaskORM
+    from src.models.task import TaskORM
 
 
 class ProjectORM(BaseORM):
@@ -41,4 +40,4 @@ class ProjectORM(BaseORM):
         back_populates="project", uselist=False
     )
     members: Mapped[List["ProjectMemberORM"]] = relationship(back_populates="project")
-    # tasks: Mapped[List["TaskORM"]] = relationship(back_populates="project")
+    tasks: Mapped[List["TaskORM"]] = relationship(back_populates="project")
