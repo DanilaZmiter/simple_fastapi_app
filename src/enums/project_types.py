@@ -26,3 +26,11 @@ class ProjectTypesDifficulty(StrEnum):
     Predictable = "PREDICTABLE"
     Complex = "COMPLEX"
     RandD = "R&D"
+
+
+class ProjectTypesStatus(StrEnum):
+    DRAFT = "draft"
+    ACTIVE = "active"
+    ON_HOLD = "on_hold"
+    COMPLETED = "completed"
+    ARCHIVED = "archived"
