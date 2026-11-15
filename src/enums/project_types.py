@@ -2,35 +2,35 @@ from enum import StrEnum
 
 
 class ProjectTypesBusiness(StrEnum):
-    Production = "PRODUCTION"
-    Internal = "INTERNAL"
-    Custom = "CUSTOM"
+    Production = "Production"
+    Internal = "Internal"
+    Custom = "Custom"
 
 
 class ProjectTypesDirection(StrEnum):
-    SoftwareDevelopment = "SOFTWARE DEVELOPMENT"
-    InfrastructureAndDevOPS = "INFRASTRUCTURE AND DEVOPS"
-    DataAIML = "DATA/AI/ML"
-    Integration = "INTEGRATION"
-    InfoSec = "INFOSEC"
+    SoftwareDevelopment = "Software Development"
+    InfrastructureAndDevOPS = "Infrastructure and DevOps"
+    DataAIML = "Data/AI/ML"
+    Integration = "Integration"
+    InfoSec = "InfoSec"
 
 
 class ProjectTypesLifeCycle(StrEnum):
-    Greenfield = "GREENFIELD"
-    Brownfield = "BROWNFIELD"
-    MigrationRefactoring = "MIGRATION/REFACTORING"
-    Support = "SUPPORT"
+    Greenfield = "Greenfield"
+    Brownfield = "Brownfield"
+    MigrationRefactoring = "Migration/Refactoring"
+    Support = "Support"
 
 
 class ProjectTypesDifficulty(StrEnum):
-    Predictable = "PREDICTABLE"
-    Complex = "COMPLEX"
+    Predictable = "Predictable"
+    Complex = "Complex"
     RandD = "R&D"
 
 
-class ProjectTypesStatus(StrEnum):
-    DRAFT = "draft"
-    ACTIVE = "active"
-    ON_HOLD = "on_hold"
-    COMPLETED = "completed"
-    ARCHIVED = "archived"
+class ProjectStatus(StrEnum):
+    Draft = "Draft"
+    Active = "Active"
+    OnHold = "On_hold"
+    Completed = "Completed"
+    Archived = "Archived"
