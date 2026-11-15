@@ -9,7 +9,7 @@ from src.enums.project_types import (
 )
 
 
-class ProjectType(Base):
+class ProjectTypeORM(Base):
     __tablename__ = "project_types_table"
     project_id: Mapped[int] = mapped_column(
         ForeignKey("projects_table.id", ondelete="CASCADE"), primary_key=True
