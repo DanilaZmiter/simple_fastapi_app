@@ -1,13 +1,13 @@
 from enum import StrEnum
 
 
-class ProjectTypesBusiness(StrEnum):
+class ProjectBusinessType(StrEnum):
     Production = "Production"
     Internal = "Internal"
     Custom = "Custom"
 
 
-class ProjectTypesDirection(StrEnum):
+class ProjectDirection(StrEnum):
     SoftwareDevelopment = "Software Development"
     InfrastructureAndDevOPS = "Infrastructure and DevOps"
     DataAIML = "Data/AI/ML"
@@ -15,14 +15,14 @@ class ProjectTypesDirection(StrEnum):
     InfoSec = "InfoSec"
 
 
-class ProjectTypesLifeCycle(StrEnum):
+class ProjectLifeCycle(StrEnum):
     Greenfield = "Greenfield"
     Brownfield = "Brownfield"
     MigrationRefactoring = "Migration/Refactoring"
     Support = "Support"
 
 
-class ProjectTypesDifficulty(StrEnum):
+class ProjectDifficulty(StrEnum):
     Predictable = "Predictable"
     Complex = "Complex"
     RandD = "R&D"
